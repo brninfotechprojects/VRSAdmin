@@ -26,9 +26,9 @@ app.use("/api/auth", authRoutes);
 app.use(express.static(path.join(__dirname, "dist")));
 
 // Fallback to index.html for React routing
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "dist", "index.html"));
+// });
 
 // Start Server
 const PORT = process.env.PORT || 5000;
