@@ -21,6 +21,14 @@ mongoose
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
 
+// Serve static files
+app.use(express.static(path.join(__dirname, "dist")));
+
+// Fallback to index.html for React routing
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
+
 // Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
