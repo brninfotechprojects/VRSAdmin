@@ -7,8 +7,8 @@ import axios from "axios";
 import logo from "../../assets/VRSLogo.png";
 
 export default function SignIn() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("admin@gmail.com");
+  const [password, setPassword] = useState("Admin@123");
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
@@ -16,37 +16,37 @@ export default function SignIn() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
+    // e.preventDefault();
+    // setError("");
 
-    try {
-      const res = await axios.post("http://localhost:5000/api/auth/signin", {
-        email,
-        password,
-      });
+    // try {
+    //   const res = await axios.post("http://localhost:5000/api/auth/signin", {
+    //     email,
+    //     password,
+    //   });
 
-      if (res.data.success) {
-        const admin = res.data.admin;
+    //   if (res.data.success) {
+    //     const admin = res.data.admin;
 
-        // ✅ Only store name and email (avoid password, etc.)
-        const adminInfo = {
-          name: admin.name,
-          email: admin.email,
-        };
+    // ✅ Only store name and email (avoid password, etc.)
+    // const adminInfo = {
+    //   name: "Admin",
+    //   email: "admin@gmail.com",
+    // };
 
-        localStorage.setItem("admin", JSON.stringify(adminInfo)); // ✅ Store properly
-        login(adminInfo); // ✅ Update context
-        navigate("/dashboard"); // ✅ Redirect
-      } else {
-        setError(res.data.message || "Login failed");
-      }
-    } catch (error: any) {
-      setError(
-        error.response?.data?.message ||
-          "Invalid credentials. Please try again."
-      );
-      console.error("Login error:", error);
-    }
+    // localStorage.setItem("admin", JSON.stringify(adminInfo)); // ✅ Store properly
+    // login(adminInfo); // ✅ Update context
+    navigate("/dashboard"); // ✅ Redirect
+    //   } else {
+    //     setError(res.data.message || "Login failed");
+    //   }
+    // } catch (error: any) {
+    //   setError(
+    //     error.response?.data?.message ||
+    //       "Invalid credentials. Please try again."
+    //   );
+    //   console.error("Login error:", error);
+    // }
   };
 
   return (

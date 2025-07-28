@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { Menu, Bell, ChevronDown, LogOut } from 'lucide-react';
-import { useAuth } from '../../contexts/AuthContext';
+import React, { useState } from "react";
+import { Menu, Bell, ChevronDown, LogOut } from "lucide-react";
+import { useAuth } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   setSidebarOpen: (open: boolean) => void;
@@ -9,6 +10,7 @@ interface HeaderProps {
 export default function Header({ setSidebarOpen }: HeaderProps) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { user, logout } = useAuth();
+  let navigate = useNavigate();
 
   return (
     <div className="relative z-10 flex-shrink-0 flex h-16 bg-white shadow border-b border-gray-200">
@@ -22,7 +24,9 @@ export default function Header({ setSidebarOpen }: HeaderProps) {
 
       <div className="flex-1 px-4 flex justify-between items-center">
         <div className="flex-1">
-          <h1 className="text-lg font-semibold text-gray-900">Welcome Admin Dashboard</h1>
+          <h1 className="text-lg font-semibold text-gray-900">
+            Welcome Admin Dashboard
+          </h1>
         </div>
 
         <div className="ml-4 flex items-center md:ml-6 space-x-4">
@@ -45,7 +49,9 @@ export default function Header({ setSidebarOpen }: HeaderProps) {
                     {user?.name.charAt(0)}
                   </span>
                 </div>
-                <span className="ml-3 text-gray-700 text-sm font-medium">{user?.name}</span>
+                <span className="ml-3 text-gray-700 text-sm font-medium">
+                  {user?.name}
+                </span>
                 <ChevronDown className="ml-2 h-4 w-4 text-gray-400" />
               </button>
             </div>
@@ -57,7 +63,9 @@ export default function Header({ setSidebarOpen }: HeaderProps) {
                   <p className="text-gray-500">{user?.email}</p>
                 </div>
                 <button
-                  onClick={logout}
+                  onClick={() => {
+                    navigate("/signin");
+                  }}
                   className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
                   <LogOut className="mr-3 h-4 w-4" />
