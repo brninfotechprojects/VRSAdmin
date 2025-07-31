@@ -83,7 +83,7 @@ function SidebarContent({ location }: { location: any }) {
           <span className="ml-3 text-xl font-bold text-gray-900">VR Shuttle</span> */}
           <img
             style={{ objectFit: "contain", height: "90px" }}
-            src={logo}
+            src={logo} alt="VR Shuttle Logo"
           ></img>
         </div>
         <nav className="mt-8 flex-1 px-2 space-y-1">

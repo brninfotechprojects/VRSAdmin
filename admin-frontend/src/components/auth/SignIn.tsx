@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Zap, Eye, EyeOff, Mail, Lock } from "lucide-react";
-import axios from "axios";
+import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import logo from "../../assets/VRSLogo.png";
 
 export default function SignIn() {

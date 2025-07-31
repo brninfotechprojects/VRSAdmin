@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Menu, Bell, ChevronDown, LogOut } from "lucide-react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +25,7 @@ export default function Header({ setSidebarOpen }: HeaderProps) {
       <div className="flex-1 px-4 flex justify-between items-center">
         <div className="flex-1">
           <h1 className="text-lg font-semibold text-gray-900">
-            Welcome Admin Dashboard
+            Welcome to Admin Dashboard
           </h1>
         </div>
 
